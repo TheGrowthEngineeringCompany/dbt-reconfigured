@@ -1,0 +1,29 @@
+version: 2
+
+macros:
+  - name: normalize_email
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     args:
+    #       - ColumnExpression[String]
+    #     returns: String | Null
+    # END RCUNCOMMENT
+    description: |
+      Normalizes email address. Does following actions:
+
+      * lowers the text
+      * trims
+      * removes any extra if there is + in the prefix
+
+      Example:
+        " Nipsuli+coolapp@Reconfigured.Io "
+        Becomes "nipsuli@reconfigured.io"
+
+      Avoids trhowing by casting input to string.
+    arguments:
+      - name: text
+        type: string column expression
+        description: Column containing input string

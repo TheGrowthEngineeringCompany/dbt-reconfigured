@@ -1,0 +1,16 @@
+name: 'reconfigured_test'
+version: '0.1.0'
+config-version: 2
+
+profile: 'reconfigured_test'
+
+model-paths: ["models"]
+analysis-paths: []
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["../macros"]
+snapshot-paths: []
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
