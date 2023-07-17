@@ -1,11 +1,6 @@
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
 name: 'reconfigured'
 version: '0.1.0'
 config-version: 2
-
-profile: 'reconfigured'
 
 model-paths: []
 analysis-paths: []
@@ -14,6 +9,6 @@ seed-paths: []
 macro-paths: ["macros"]
 snapshot-paths: []
 
-clean-targets:         # directories to be removed by `dbt clean`
+clean-targets:
   - "target"
   - "dbt_packages"
