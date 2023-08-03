@@ -2,13 +2,11 @@ name: 'reconfigured_test'
 version: '0.1.0'
 config-version: 2
 
-profile: 'reconfigured_test'
-
 model-paths: ["models"]
 analysis-paths: []
 test-paths: ["tests"]
 seed-paths: ["seeds"]
-macro-paths: ["../macros"]
+macro-paths: ["../macros", "tests"]
 snapshot-paths: []
 
 clean-targets:
