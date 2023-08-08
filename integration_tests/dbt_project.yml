@@ -2,6 +2,10 @@ name: 'reconfigured_test'
 version: '0.1.0'
 config-version: 2
 
+# profile: reconfigured_test_bigquery
+# profile: reconfigured_test_snowflake
+profile: reconfigured_test_redshift
+
 model-paths: ["models"]
 analysis-paths: []
 test-paths: ["tests"]

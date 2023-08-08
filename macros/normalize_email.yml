@@ -7,6 +7,7 @@ macros:
     #   reconfigured:
     #     kind: Expression
     #     throws: false
+    #     type_args: []
     #     args:
     #       - ColumnExpression[String]
     #     returns: String | Null

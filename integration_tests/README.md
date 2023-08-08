@@ -1,3 +1,6 @@
 # Integration tests
 
-Currently only BigQuery tested, todo add more targets
+the test runner scipt `run_tests.sh` is in the root of repo
+
+TODO:
+* automated test setup

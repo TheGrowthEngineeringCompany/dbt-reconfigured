@@ -1,0 +1,32 @@
+version: 2
+
+macros:
+  - name: py_to_sql
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: true
+    #     type_args:
+    #       - name: T
+    #         constraint: PyValue
+    #       - name: U
+    #         constraint: PyStr
+    #     args:
+    #       - T
+    #       - Optional[U]
+    #     returns: PyToSQL[T]
+    # END RCUNCOMMENT
+    description: |
+      Converts python types into sql
+      If conversion cannot be made it throws
+      If no type argument given it tries to infer the type
+
+      There are also internal helpers in this module
+    arguments:
+      - name: value
+        type: primitive
+        description: Any primitive python value that can be converted into SQL
+      - name: t
+        type: optional type
+        description: "'string' | 'bigint' | 'int' | 'bool' | 'float' | 'numeric' | 'timestamp' "

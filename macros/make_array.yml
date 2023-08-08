@@ -1,0 +1,36 @@
+version: 2
+
+macros:
+  - name: make_array
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: true
+    #     type_args:
+    #       - name: T
+    #         constraint: PyValue
+    #     args: 
+    #       - PyArray[T]
+    #     returns: Array[PyToSQL[T]]
+    # END RCUNCOMMENT
+    description: |
+      Constructs SQL native array from Python array.
+
+      Good to note that dbt it self also has dbt.array_construct to do similar thing
+      This one is bit different on purpose. The dbt.array_construct passes input
+      values as they are, make_array infers the types of the inputs and inserts
+      those as equivalent SQL constatns.
+
+      Example (BigQuery)
+        These:
+          make_array(["foo", "bar", "baz"]),
+          dbt.array_construct(["foo", "bar", "baz"])
+        Results in:
+          [CAST('foo' AS STRING), CAST('bar' AS STRING), CAST('baz' AS STRING)],
+          [ foo , bar , baz ]
+        
+    arguments:
+      - name: value
+        type: List of Python values
+        description: Python list to convert into SQL array
