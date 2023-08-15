@@ -18,7 +18,7 @@ macros:
         "asdfasfd"
         Becomes 389205904d6c7bb83fc676513911226f2be25bf1465616bb9b29587100ab1414
 
-      Avoids trhowing by casting input to string.
+      Avoids throwing by casting input to string.
     arguments:
       - name: text
         type: string column expression
