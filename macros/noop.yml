@@ -1,0 +1,22 @@
+version: 2
+
+macros:
+  - name: noop
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args:
+    #       - name: T
+    #         constraint: Value
+    #     args:
+    #       - T
+    #     returns: Nothing
+    # END RCUNCOMMENT
+    description: |
+      Does absolutely nothing
+    arguments:
+      - name: value
+        type: Any
+        description: Some value needs to be given

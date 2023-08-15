@@ -1,12 +1,12 @@
-{% macro normalize_email(text) %}
+{%- macro normalize_email(text) -%}
 {{ return(adapter.dispatch('normalize_email') (text)) }}
-{% endmacro %}
+{%- endmacro -%}
 
-{% macro default__normalize_email(t) %}
+{%- macro default__normalize_email(t) -%}
 {{ exceptions.raise_compiler_error("Unsupported target database") }}
-{% endmacro %}
+{%- endmacro -%}
 
-{% macro redshift__normalize_email(text) %}
+{%- macro redshift__normalize_email(text) -%}
 CASE
   WHEN REGEXP_INSTR(
     TRIM(CAST({{ text }} as {{ dbt.type_string() }})),
@@ -14,9 +14,9 @@ CASE
   ) THEN REGEXP_REPLACE(LOWER(TRIM(CAST({{ text }} as {{ dbt.type_string() }}))), '\\+[\\d\\D]*\\@', '@')
   ELSE NULL
 END
-{% endmacro %}
+{%- endmacro -%}
 
-{% macro snowflake__normalize_email(text) %}
+{%- macro snowflake__normalize_email(text) -%}
 CASE
   WHEN REGEXP_LIKE(
     TRIM(CAST({{ text }} as {{ dbt.type_string() }})),
@@ -24,9 +24,9 @@ CASE
   ) THEN REGEXP_REPLACE(LOWER(TRIM(CAST({{ text }} as {{ dbt.type_string() }}))), '\\+[\\d\\D]*\\@', '@')
   ELSE NULL
 END
-{% endmacro %}
+{%- endmacro -%}
 
-{% macro bigquery__normalize_email(text) %}
+{%- macro bigquery__normalize_email(text) -%}
 CASE
   WHEN REGEXP_CONTAINS(
     TRIM(CAST({{ text }} as {{ dbt.type_string() }})),
@@ -34,5 +34,5 @@ CASE
   ) THEN REGEXP_REPLACE(LOWER(TRIM(CAST({{ text }} as {{ dbt.type_string() }}))), r'\+[\d\D]*\@', '@')
   ELSE NULL
 END
-{% endmacro %}
+{%- endmacro -%}
 

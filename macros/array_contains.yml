@@ -1,0 +1,26 @@
+version: 2
+
+macros:
+  - name: array_contains
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: true
+    #     type_args:
+    #       - name: T
+    #         constraint: SQLValue
+    #     args:
+    #       - ColumnExpression[Array[T]]
+    #       - ColumnExpression[T]
+    #     returns: Boolean
+    # END RCUNCOMMENT
+    description: |
+      Checks if array column/value 
+    arguments:
+      - name: arr
+        type: anyarray
+        description: Array to check if it contains the value
+      - name: val
+        type: anytype
+        description: Decired value to check
