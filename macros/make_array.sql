@@ -1,5 +1,5 @@
 {%- macro make_array(value) -%}
-{{ return(adapter.dispatch('make_array')(value)) -}}
+{{ return(adapter.dispatch('make_array', 'reconfigured')(value)) -}}
 {%- endmacro -%}
 
 {%- macro default__make_array(t) -%}

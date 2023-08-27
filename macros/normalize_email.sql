@@ -1,5 +1,5 @@
 {%- macro normalize_email(text) -%}
-{{ return(adapter.dispatch('normalize_email') (text)) }}
+{{ return(adapter.dispatch('normalize_email', 'reconfigured') (text)) }}
 {%- endmacro -%}
 
 {%- macro default__normalize_email(t) -%}

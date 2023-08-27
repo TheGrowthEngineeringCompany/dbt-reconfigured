@@ -1,5 +1,5 @@
 {% macro best_effort_parse_timestamp(text) %}
-{{ return(adapter.dispatch('best_effort_parse_timestamp')(text)) }}
+{{ return(adapter.dispatch('best_effort_parse_timestamp', 'reconfigured')(text)) }}
 {% endmacro %}
 
 {% macro default__best_effort_parse_timestamp(t) %}

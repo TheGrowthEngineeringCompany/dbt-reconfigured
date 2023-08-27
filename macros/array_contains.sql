@@ -1,5 +1,5 @@
 {%- macro array_contains(arr, val) -%}
-{{ return(adapter.dispatch('array_contains')(arr, val)) }}
+{{ return(adapter.dispatch('array_contains', 'reconfigured')(arr, val)) }}
 {%- endmacro -%}
 
 {%- macro default__array_contains(t) -%}

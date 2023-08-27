@@ -1,6 +1,6 @@
 
 {% macro maybe_is_iso8601(text) %}
-{{ return(adapter.dispatch('maybe_is_iso8601')(text)) }}
+{{ return(adapter.dispatch('maybe_is_iso8601', 'reconfigured')(text)) }}
 {% endmacro %}
 
 {% macro default__maybe_is_iso8601(t) %}

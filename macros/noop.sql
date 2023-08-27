@@ -1,5 +1,5 @@
 {%- macro noop(value) -%}
-{{ return(adapter.dispatch('noop')(value)) }}
+{{ return(adapter.dispatch('noop', 'reconfigured')(value)) }}
 {%- endmacro -%}
 
 {%- macro default__noop(value) -%}

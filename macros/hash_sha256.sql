@@ -1,5 +1,5 @@
 {% macro hash_sha256(text) %}
-{{ return(adapter.dispatch('hash_sha256')(text)) }}
+{{ return(adapter.dispatch('hash_sha256', 'reconfigured')(text)) }}
 {% endmacro %}
 
 {% macro default__hash_sha256(t) %}
