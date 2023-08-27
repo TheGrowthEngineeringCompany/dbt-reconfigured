@@ -1,0 +1,24 @@
+version: 2
+
+macros:
+  - name: maybe_is_iso8601
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     args:
+    #       - ColumnExpression[String]
+    #     returns: Boolean
+    # END RCUNCOMMENT
+    description: |
+      Checks if string looks like ISO8601 formatted string.
+      Does not validate if date is valid, e.g 2013-99-01T45:23:15
+      returns true
+
+      Belongs to "best effort" -module where we try our best to parse
+      data to sensible format
+    arguments:
+      - name: text
+        type: string column expression
+        description: Column containing input string

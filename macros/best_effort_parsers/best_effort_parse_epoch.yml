@@ -1,0 +1,23 @@
+version: 2
+
+macros:
+  - name: best_effort_parse_epoch
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     args:
+    #       - ColumnExpression[String]
+    #     returns: Option[Timestamp]
+    # END RCUNCOMMENT
+    description: |
+      Tries to parse timestamp from column that should contain epoch timestamps.
+      If one cannot convert then null is returned.
+
+      Belongs to "best effort" -module where we try our best to parse
+      data to sensible format
+    arguments:
+      - name: text
+        type: string column expression
+        description: Column containing input string

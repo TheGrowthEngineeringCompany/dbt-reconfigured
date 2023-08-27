@@ -1,0 +1,27 @@
+version: 2
+
+macros:
+  - name: best_effort_parse_timestamp
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     args:
+    #       - ColumnExpression[String]
+    #     returns: Option[Timestamp]
+    # END RCUNCOMMENT
+    description: |
+      Tries to parse timestamp from text column, currently working
+      * Long form ISO 8601, example "2023-08-27T16:29:54Z"
+      * EPOCH timestamp in seconds, example "1693155990"
+
+      TODO:
+      * EPOCH in millis and nanos
+
+      Belongs to "best effort" -module where we try our best to parse
+      data to sensible format
+    arguments:
+      - name: text
+        type: string column expression
+        description: Column containing input string
