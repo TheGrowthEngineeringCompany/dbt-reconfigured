@@ -7,9 +7,9 @@
 {% endmacro %}
 
 {% macro redshift__best_effort_parse_timestamp(text) %}
-CASE WHEN {{ maybe_is_iso8601(text) }}
+CASE WHEN {{ reconfigured.maybe_is_iso8601(text) }}
 THEN CAST({{ text }} AS TIMESTAMP)
-ELSE ({{ best_effort_parse_epoch(text) }}) END
+ELSE ({{ reconfigured.best_effort_parse_epoch(text) }}) END
 {% endmacro %}
 
 {% macro snowflake__best_effort_parse_timestamp(text) %}
@@ -19,5 +19,5 @@ TRY_TO_TIMESTAMP({{ text }})
 {% macro bigquery__best_effort_parse_timestamp(text) %}
 CASE WHEN {{ safe_cast(text, api.Column.translate_type('timestamp')) }} IS NOT NULL
 THEN TIMESTAMP({{ text }})
-ELSE ({{ best_effort_parse_epoch(text) }}) END
+ELSE ({{ reconfigured.best_effort_parse_epoch(text) }}) END
 {% endmacro %}

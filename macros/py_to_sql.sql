@@ -11,7 +11,7 @@
 {%- endmacro -%}
 
 {%- macro py_to_sql_type(t) -%}
-{{ py_to_sql_type_map()[t]() }}
+{{ reconfigured.py_to_sql_type_map()[t]() }}
 {%- endmacro -%}
 
 {%- macro py_to_sql_infer_type(value) -%}
@@ -27,7 +27,7 @@
 {%- endmacro -%}
 
 {%- macro py_to_sql_get_or_infer_type(value, t=None) -%}
-{{ return(t or py_to_sql_infer_type(value))}}
+{{ return(t or reconfigured.py_to_sql_infer_type(value))}}
 {%- endmacro -%}
 
 {%- macro py_to_sql(value, t=None) -%}
@@ -47,5 +47,5 @@
 {%- endmacro -%}
 
 {%- macro default__py_to_sql(value, t) -%}
-CAST({{ py_to_sql_literal(value, t) }} AS {{ py_to_sql_type(t) }})
+CAST({{ reconfigured.py_to_sql_literal(value, t) }} AS {{ reconfigured.py_to_sql_type(t) }})
 {%- endmacro -%}
