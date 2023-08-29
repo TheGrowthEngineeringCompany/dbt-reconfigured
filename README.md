@@ -1,8 +1,18 @@
-# reconfigured dbt package
+# dbt reconfigured
 
-WIP
+Utilities created by [reconfigured](https://reconfigured.io). These macros try to be simple and composable.
 
-This will host [reconfigured](https://reconfigured.io) created utility macros
+## Installation
+
+Add
+
+```yaml
+packages:
+  - git: https://github.com/TheGrowthEngineeringCompany/dbt-reconfigured
+    revision: v0.1.2
+```
+
+To `packages.yml` and run `dbt deps`
 
 ## Tests
 
