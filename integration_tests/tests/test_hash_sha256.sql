@@ -18,11 +18,11 @@ d2 as (
 
 tst as (
     select
-        {{ hash_sha256('inp') }} = expected as success
+        {{ reconfigured.hash_sha256('inp') }} = expected as success
     from d1
     union all
     select
-        {{ hash_sha256('inp') }} = expected as success
+        {{ reconfigured.hash_sha256('inp') }} = expected as success
     from d2
 )
 

@@ -28,11 +28,11 @@ d2 as (
 
 tst as (
     select
-        {{ normalize_email('inp') }} = expected as success
+        {{ reconfigured.normalize_email('inp') }} = expected as success
     from d1
     union all
     select
-        {{ normalize_email('inp') }} = expected as success
+        {{ reconfigured.normalize_email('inp') }} = expected as success
     from d2
 )
 
