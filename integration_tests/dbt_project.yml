@@ -5,13 +5,14 @@ config-version: 2
 # these are here for quick uncomment when iteratively developing
 # profile: reconfigured_test_bigquery
 # profile: reconfigured_test_snowflake
-profile: reconfigured_test_redshift
+# profile: reconfigured_test_redshift
 
 model-paths: ["models"]
 analysis-paths: []
 test-paths: ["tests"]
 seed-paths: ["seeds"]
-macro-paths: ["../macros", "tests"]
+# macro-paths: ["../macros", "tests"]
+macro-paths: ["tests"]
 snapshot-paths: []
 
 clean-targets:

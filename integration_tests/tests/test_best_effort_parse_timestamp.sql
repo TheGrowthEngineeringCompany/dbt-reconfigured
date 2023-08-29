@@ -12,7 +12,7 @@ with d as (
     cast(null as timestamp) as expected
 ), test as (
   select
-    {{ best_effort_parse_timestamp("d.input") }} as input,
+    {{ reconfigured.best_effort_parse_timestamp("d.input") }} as input,
     d.expected
     from d
 )

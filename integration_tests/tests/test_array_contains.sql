@@ -7,7 +7,7 @@ with a as (select 1)
   select 1
     ,array_column
     ,array_has_123
-    ,{{ array_contains("array_column", "123") }} as array_contains
+    ,{{ reconfigured.array_contains("array_column", "123") }} as array_contains
   from test_data
 )
 

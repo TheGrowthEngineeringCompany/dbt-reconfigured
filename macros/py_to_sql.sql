@@ -31,7 +31,7 @@
 {%- endmacro -%}
 
 {%- macro py_to_sql(value, t=None) -%}
-{{ return(adapter.dispatch('py_to_sql', 'reconfigured')(value, py_to_sql_get_or_infer_type(value, t))) }}
+{{ return(adapter.dispatch('py_to_sql', 'reconfigured')(value, reconfigured.py_to_sql_get_or_infer_type(value, t))) }}
 {%- endmacro -%}
 
 {%- macro py_to_sql_literal(value, t) -%}

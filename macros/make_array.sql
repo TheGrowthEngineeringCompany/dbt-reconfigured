@@ -9,7 +9,7 @@
 {%- macro redshift__make_array(value) -%}
 ARRAY(
 {%- for v in value -%}
-{{ py_to_sql(v) }}
+{{ reconfigured.py_to_sql(v) }}
 {%- if not loop.last -%}, {% endif-%}
 {%- endfor -%}
 )
@@ -18,7 +18,7 @@ ARRAY(
 {%- macro snowflake__make_array(value) -%}
 ARRAY_CONSTRUCT(
 {%- for v in value -%}
-{{ py_to_sql(v) }}
+{{ reconfigured.py_to_sql(v) }}
 {%- if not loop.last -%}, {% endif-%}
 {%- endfor -%}
 )
@@ -27,7 +27,7 @@ ARRAY_CONSTRUCT(
 {%- macro bigquery__make_array(value) -%}
 [
 {%- for v in value -%}
-{{ py_to_sql(v) }}
+{{ reconfigured.py_to_sql(v) }}
 {%- if not loop.last -%}, {% endif-%}
 {%- endfor -%}
 ]
