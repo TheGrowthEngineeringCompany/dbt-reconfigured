@@ -1,0 +1,66 @@
+version: 2
+
+macros:
+  - name: case_when
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args:
+    #       - name: U
+    #         constraint: Value
+    #     args: []
+    #     returns: U
+    # END RCUNCOMMENT
+    description: |
+      Builds case when statement
+      See the test case for usage
+    arguments:
+      - name: _
+        type: Any
+        description: Any number of if_else blocks followed by optional else_ block
+  - name: if_then
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args:
+    #       - name: T
+    #         constraint: BoolenExpr
+    #       - name: U
+    #         constraint: Value
+    #     args:
+    #       - T
+    #       - U
+    #     returns: U
+    # END RCUNCOMMENT
+    description: |
+      Builds when then block
+    arguments:
+      - name: when
+        type: Boolean Expression
+        description: What to check
+      - name: then
+        type: Expression
+        description: What to return if when is true
+  - name: if_then
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args:
+    #       - name: U
+    #         constraint: Value
+    #     args:
+    #       - U
+    #     returns: U
+    # END RCUNCOMMENT
+    description: |
+      Builds else block
+    arguments:
+      - name: then
+        type: Expression
+        description: What to return if everything fails
