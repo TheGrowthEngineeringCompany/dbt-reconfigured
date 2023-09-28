@@ -45,7 +45,7 @@ macros:
       - name: then
         type: Expression
         description: What to return if when is true
-  - name: if_then
+  - name: else_
     # RCUNCOMMENT
     # meta:
     #   reconfigured:
