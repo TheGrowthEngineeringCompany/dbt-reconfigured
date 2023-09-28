@@ -1,0 +1,26 @@
+version: 2
+
+macros:
+  - name: parse_email_domain
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args: []
+    #     args:
+    #       - ColumnExpression[String]
+    #     returns: String | Null
+    # END RCUNCOMMENT
+    description: |
+      Tries to parse email domain out of text
+
+      Example:
+        'niko@reconfigured.io'
+        Becomes 'reconfigured.io'
+
+      Avoids trhowing by casting input to string.
+    arguments:
+      - name: text
+        type: string column expression
+        description: Column containing input string
