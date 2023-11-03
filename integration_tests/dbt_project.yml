@@ -11,8 +11,7 @@ model-paths: ["models"]
 analysis-paths: []
 test-paths: ["tests"]
 seed-paths: ["seeds"]
-# macro-paths: ["../macros", "tests"]
-macro-paths: ["tests"]
+macro-paths: ["tests", "macros"]
 snapshot-paths: []
 
 clean-targets:
