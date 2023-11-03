@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: union_test_expected
+    tests:
+      - dbt_utils.equality:
+          compare_model: ref('union_test')
+          compare_columns:
+            - id
+            - another_id
+            - value_1
+            - value_2
