@@ -1,0 +1,26 @@
+version: 2
+
+macros:
+  - name: union_with_id_prefix
+    description: |
+      Unions relations and adds prefixes to id columns
+
+      Really useful on unioning similar data sets from different sources
+      Example in case of having same schema deployed for different tenants
+      and one needs to union them to make global analytics.
+
+      Example:
+
+      In additon of these args has the same extra args as dbt_utils.union_relations:
+        * column_override
+        * include
+        * exclude
+        * source_column_name
+        * where
+    arguments:
+      - name: id_cols
+        type: string array
+        description: Array to contain the id columns to get prefixed
+      - name: relations
+        type: "[rel, prefix] array"
+        description: Array of [relation, prefix] tuples
