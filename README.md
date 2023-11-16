@@ -9,7 +9,7 @@ Add
 ```yaml
 packages:
   - git: https://github.com/TheGrowthEngineeringCompany/dbt-reconfigured
-    revision: 0.1.4
+    revision: 0.1.5
 ```
 
 To `packages.yml` and run `dbt deps`
