@@ -1,0 +1,29 @@
+version: 2
+
+macros:
+  - name: cast
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: true
+    #     type_args:
+    #       - name: T
+    #         constraint: ColumnExpression[Any]
+    #       - name: U
+    #         constraint: Type
+    #     args:
+    #       - T
+    #       - U
+    #     returns: TypeOf[U]
+    # END RCUNCOMMENT
+    description: |
+      Converts expression to other type types into sql
+      If conversion cannot be made it throws
+    arguments:
+      - name: value
+        type: ColumnExpression
+        description: Column expression to be casted
+      - name: type_
+        type: type
+        description: Any valid db type

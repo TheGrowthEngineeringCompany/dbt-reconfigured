@@ -1,0 +1,101 @@
+version: 2
+
+macros:
+  - name: st
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: true
+    #     type_args:
+    #       - name: T
+    #         constraint: PyStr
+    #       - name: U
+    #         constraint: PyStr
+    #     args:
+    #       - T
+    #       - U
+    #     returns: TypeOf[U]
+    # END RCUNCOMMENT
+    description: |
+      Converts literal string to type
+    arguments:
+      - name: value
+        type: PyStr
+        description: Literal string
+      - name: type_
+        type: type
+        description: Any valid db type
+  - name: s
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args:
+    #       - name: T
+    #         constraint: PyStr
+    #     args:
+    #       - T
+    #     returns: String
+    # END RCUNCOMMENT
+    description: |
+      Converts literal string to string literal
+    arguments:
+      - name: value
+        type: PyStr
+        description: Literal string
+  - name: t
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args:
+    #       - name: U
+    #         constraint: PyStr
+    #     args:
+    #       - U
+    #     returns: PyToSQLType[U]
+    # END RCUNCOMMENT
+    description: |
+      Shorthand for api.Column.translate_type
+    arguments:
+      - name: type_
+        type: type
+        description: Any valid db type
+  - name: q
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: false
+    #     type_args:
+    #       - name: U
+    #         constraint: PyStr
+    #     args:
+    #       - U
+    #     returns: ColRef
+    # END RCUNCOMMENT
+    description: |
+      Shorthand for adapter.quote
+    arguments:
+      - name: col
+        type: string
+        description: String reference
+  - name: if_incr
+    description: |
+      Shorthand to dispatch one or other expression depending on if is_incremental()
+    arguments:
+      - name: stmt
+        type: any
+        description: Expression to inject when incremental
+      - name: fallback
+        type: any
+        description: What to inject when not incremental
+  - name: min_ts
+    description: Return lowest possbile timestamp
+  - name: max_ts
+    description: Returns highest possible timestamp
+  - name: run_start_ts
+    description: Returns dbt run started casted as timestamp

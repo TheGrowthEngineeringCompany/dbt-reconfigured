@@ -1,0 +1,27 @@
+version: 2
+
+macros:
+  - name: most_recent
+    # RCUNCOMMENT
+    # meta:
+    #   reconfigured:
+    #     kind: Expression
+    #     throws: true
+    #     type_args:
+    #       - name: T
+    #         constraint: SQLValue
+    #     args:
+    #       - ColumnExpression[T]
+    #       - ColumnExpression[T]
+    #     returns: T
+    # END RCUNCOMMENT
+    description: |
+      Aggregates column to pick the most recent based on the second
+      argument.
+    arguments:
+      - name: col
+        type: any
+        description: Colunm to select value from
+      - name: recency_column
+        type: any
+        description: Column to select the max
