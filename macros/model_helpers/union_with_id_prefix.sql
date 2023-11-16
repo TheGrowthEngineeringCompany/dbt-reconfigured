@@ -1,9 +1,9 @@
-{% macro union_with_id_prefix(id_cols, relations, column_override=none, include=[], exclude=[], source_column_name='_dbt_source_relation', where=none) %}
-{{ return(adapter.dispatch('union_with_id_prefix', 'reconfigured')(id_cols, relations, column_override, include, exclude, source_column_name, where)) }}
+{% macro union_with_id_prefix(id_cols, relations, column_override=none, column_override_fn=none, include=[], exclude=[], source_column_name='_dbt_source_relation', where=none) %}
+{{ return(adapter.dispatch('union_with_id_prefix', 'reconfigured')(id_cols, relations, column_override, column_override_fn, include, exclude, source_column_name, where)) }}
 {% endmacro %}
 
 
-{% macro default__union_with_id_prefix(id_cols, relations, column_override=none, include=[], exclude=[], source_column_name='_dbt_source_relation', where=none) %}
+{% macro default__union_with_id_prefix(id_cols, relations, column_override=none, column_override_fn=none, include=[], exclude=[], source_column_name='_dbt_source_relation', where=none) %}
 
     {#-- This is mostly dbt_utils.union_relations -#}
 
@@ -17,6 +17,7 @@
     {% endif -%}
 
     {%- set column_override = column_override if column_override is not none else {} -%}
+    {%- set column_override_fn = column_override_fn if column_override_fn is not none else {} -%}
 
     {%- set relation_columns = {} -%}
     {%- set column_superset = {} -%}
@@ -92,7 +93,10 @@
                     {%- set col_type = column_override.get(col.column, col.data_type) %}
                     {%- set col_name = adapter.quote(col_name) if col_name in relation_columns[relation] else 'null' %}
                     {%- set col_name_lower = col.name | lower -%}
-                    {%- if col_name_lower in id_cols -%}
+                    {%- set col_override_fn = column_override_fn.get(col.column) -%}
+                    {%- if col_override_fn -%}
+                        {{ col_override_fn | replace('%COL_NAME%', col_name) }} as {{ col.quoted }} {% if not loop.last %},{% endif -%}
+                    {%- elif col_name_lower in id_cols -%}
                         {{ dbt.concat([dbt.string_literal(prefix), col_name]) }} as {{ col.quoted }} {% if not loop.last %},{% endif -%}
                     {%- else -%}
                         cast({{ col_name }} as {{ col_type }}) as {{ col.quoted }} {% if not loop.last %},{% endif -%}
