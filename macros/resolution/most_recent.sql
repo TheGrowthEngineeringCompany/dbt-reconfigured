@@ -7,7 +7,7 @@
 {%- endmacro %}
 
 {% macro bigquery__most_recent(col, recency_col) -%}
-ARRAY_AGG({{ col }} IGNORE NULLS ORDER BY {{ recency_col }} LIMIT 1)[SAFE_OFFSET(1)]
+ARRAY_AGG({{ col }} IGNORE NULLS ORDER BY {{ recency_col }} LIMIT 1)[SAFE_OFFSET(0)]
 {%- endmacro %}
 
 {% macro snowflake__most_recent(col, recency_col) -%}
